@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  vpc_name = "${var.env_name} ${var.vpc_name}"
+  vpc_name     = "${var.env_name} ${var.vpc_name}"
   cluster_name = "${var.cluster_name}-${var.env_name}"
 }
 
@@ -29,7 +29,7 @@ resource "aws_subnet" "public-subnet-a" {
   availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
-    "Name"                                        = (
+    "Name" = (
       "${local.vpc_name}-public-subnet-a"
     )
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
@@ -43,7 +43,7 @@ resource "aws_subnet" "public-subnet-b" {
   availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
-    "Name"                                        = (
+    "Name" = (
       "${local.vpc_name}-public-subnet-b"
     )
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
@@ -57,7 +57,7 @@ resource "aws_subnet" "private-subnet-a" {
   availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
-    "Name"                                        = (
+    "Name" = (
       "${local.vpc_name}-private-subnet-a"
     )
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
@@ -71,7 +71,7 @@ resource "aws_subnet" "private-subnet-b" {
   availability_zone = data.aws_availability_zones.available.names[1]
 
   tags = {
-    "Name"                                        = (
+    "Name" = (
       "${local.vpc_name}-private-subnet-b"
     )
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
